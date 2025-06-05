@@ -8,13 +8,13 @@ export const authCallback = async (req, res, next) => {
 
     if (!user) {
       console.log("user not found!");
-
-      User.create({
-        clerkId: id,
-        fullname: `${firstName} ${lastName}`,
-        imageUrl: imageUrl,
-      });
     }
+
+    User.create({
+      clerkId: id,
+      fullname: `${firstName} ${lastName}`,
+      imageUrl: imageUrl,
+    });
 
     res.status(200).json({ success: true });
   } catch (error) {
