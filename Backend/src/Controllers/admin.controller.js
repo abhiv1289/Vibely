@@ -91,7 +91,7 @@ export const createAlbum = async (req, res, next) => {
 
     await album.save();
 
-    res.status(201).json(albums);
+    res.status(201).json(album);
   } catch (error) {
     console.log("Error in creating the albums", error);
 

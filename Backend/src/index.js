@@ -12,12 +12,17 @@ import authRoutes from "./Routes/auth.route.js";
 import songsRoutes from "./Routes/songs.route.js";
 import albumsRoutes from "./Routes/albums.route.js";
 import statsRoutes from "./Routes/stats.route.js";
+import { createServer } from "http";
+import { initializeSocket } from "./lib/socket.js";
 
 dotenv.config();
 const __dirname = path.resolve();
 
 const app = express();
 const PORT = process.env.PORT;
+
+const httpServer = createServer(app);
+initializeSocket(httpServer);
 
 app.use(
   cors({
@@ -55,7 +60,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(PORT, () => {
+httpServer.listen(PORT, () => {
   console.log("The server is running on port : " + PORT);
   connectDB();
 });
