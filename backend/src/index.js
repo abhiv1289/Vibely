@@ -64,12 +64,16 @@ cron.schedule("0 * * * *", () => {
   }
 });
 
-app.use("/api/users", userRoutes);
-app.use("/api/admin", adminRoutes);
-app.use("/api/auth", authRoutes);
-app.use("/api/songs", songsRoutes);
-app.use("/api/albums", albumsRoutes);
-app.use("/api/stats", statsRoutes);
+// app.use("/api/users", userRoutes);
+// app.use("/api/admin", adminRoutes);
+// app.use("/api/auth", authRoutes);
+// app.use("/api/songs", songsRoutes);
+// app.use("/api/albums", albumsRoutes);
+// app.use("/api/stats", statsRoutes);
+
+app.get("/", (req, res) => {
+  res.send("Hello from Vibely backend 🚀");
+});
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
